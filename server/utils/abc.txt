@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Solution {
+    public boolean findPath(int N, int E, int[][] edges, int src, int dest) {
+        // Create adjacency list
+        List<List<Integer>> adjList = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            adjList.add(new ArrayList<>());
+        }
+        for (int i = 0; i < E; i++) {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            adjList.get(u).add(v);
+        }
+
+        // Create visited array
+        boolean[] visited = new boolean[N];
+        // Call DFS to check for the path
+        return dfs(src, dest, adjList, visited);
+    }
+
+    // DFS method
+    private boolean dfs(int src, int dest, List<List<Integer>> adjList, boolean[] visited) {
+        if (src == dest) {
+            return true;
+        }
+
+        visited[src] = true;
+
+        for (int neighbor : adjList.get(src)) {
+            if (!visited[neighbor]) {
+                if (dfs(neighbor, dest, adjList, visited)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+}

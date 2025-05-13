@@ -10,7 +10,7 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "ISC",  
     "dependencies": {
         "apollo-server-express": "^3.10.2",
         "bcrypt": "^5.0.1",
